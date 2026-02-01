@@ -1,9 +1,31 @@
-public class Cupcake {
-    
-        // TODO: Read n
-        // TODO: Read calorie counts into an array
-        // TODO: Sort the array (think about ascending vs descending)
-        // TODO: Calculate the minimum miles using the formula (c * 2^j)
-        // TODO: Print the result (Use 'long' for the sum to avoid overflow)
-    
+import java.util.Scanner;
+
+class Cupcake {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] num = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            num[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (num[i] < num[j]) {
+                    int temp = num[i];
+                    num[i] = num[j];
+                    num[j] = temp;
+                }
+            }
+        }
+
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += num[i] * (int)Math.pow(2, i);
+        }
+
+        System.out.println(sum);
+    }
 }
